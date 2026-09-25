@@ -4,15 +4,28 @@
 #include <string>
 #include <iostream>
 
+enum class Position
+{
+    Intern,
+    Junior,
+    Middle,
+    Senior,
+    Lead,
+    Manager
+};
+std::string positionToString(Position pos);
+
 class Employee 
 {
 private:
 std::string name;
+Position position;
 double salary;
 int experience;
 
 public:
 Employee();
+Employee(const std::string& name, Position pos, double salary, int experience);
 void print() const;
 };
 
