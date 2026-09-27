@@ -26,6 +26,12 @@ int experience;
 public:
 Employee();
 Employee(const std::string& name, Position pos, double salary, int experience);
+Employee(const std::string& name);
+
+std::string getName() const;
+Position getPosition() const;
+double getSalary() const;
+int getExperience() const;
 void print() const;
 };
 

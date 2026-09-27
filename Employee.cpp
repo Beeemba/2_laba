@@ -22,6 +22,16 @@ Employee::Employee(const std::string& name, Position pos, double salary, int exp
 {
 
 }
+Employee::Employee(const std::string& name):name(name), position(Position::Intern), salary(0.0), experience(0)
+{
+
+}
+
+std::string Employee::getName() const { return name;}
+Position Employee::getPosition() const { return position; }
+double Employee::getSalary() const { return salary; }
+int Employee::getExperience() const { return experience; }
+
 void Employee::print() const
 {
     std::cout << "Сотрудник" << name
