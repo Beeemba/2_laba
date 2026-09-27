@@ -32,6 +32,9 @@ std::string getName() const;
 Position getPosition() const;
 double getSalary() const;
 int getExperience() const;
+void increaseSalary(double amount);
+void changePosition(Position newPos);
+void increaseExperience(int years);
 void print() const;
 };
 

@@ -32,6 +32,29 @@ Position Employee::getPosition() const { return position; }
 double Employee::getSalary() const { return salary; }
 int Employee::getExperience() const { return experience; }
 
+void Employee::increaseSalary(double amount) 
+{
+    if (amount < 0) {
+        std::cout << "Ошибка! Нельзя уменьшить зарплату через increaseSalary\n";
+        return;
+    }
+    salary += amount;
+}
+
+void Employee::changePosition(Position newPos) 
+{
+    position = newPos;
+}
+
+void Employee::increaseExperience(int years) 
+{
+    if (years < 0) {
+        std::cout << "!Ошибка! Стаж не может быть отрицательным\n";
+        return;
+    }
+    experience += years;
+}
+
 void Employee::print() const
 {
     std::cout << "Сотрудник" << name
