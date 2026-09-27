@@ -3,6 +3,7 @@
 
 int main()
 {
+    std::cout << "Создано объектов: " << Employee::getObjectCount() << "\n\n";
     Employee emp1;
     Employee emp2("Василий Пупкин", Position::Middle, 75000.0, 5);
     Employee emp3("Степа Светофоров");
@@ -23,5 +24,7 @@ int main()
     emp3.increaseExperience(-5);
     emp2.print();
     emp3.print();
+
+    std::cout << "\nВсего объектов: " << Employee::getObjectCount() << "\n";
     return 0;
 }

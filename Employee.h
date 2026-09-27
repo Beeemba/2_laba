@@ -22,11 +22,14 @@ std::string name;
 Position position;
 double salary;
 int experience;
+static int objectCount;
 
 public:
 Employee();
 Employee(const std::string& name, Position pos, double salary, int experience);
 Employee(const std::string& name);
+~Employee();
+static int getObjectCount();
 
 std::string getName() const;
 Position getPosition() const;

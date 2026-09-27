@@ -1,5 +1,7 @@
 #include "Employee.h"
 
+int Employee::objectCount = 0;
+
 std::string positionToString(Position pos)
 {
     switch (pos)
@@ -16,15 +18,24 @@ std::string positionToString(Position pos)
 
 Employee::Employee() : name("Неизвестно"), position(Position::Intern), salary(0.0), experience(0)
 {
-
+    ++objectCount;
 }
 Employee::Employee(const std::string& name, Position pos, double salary, int experience) : name(name), position(pos), salary(salary), experience(experience)
 {
-
+    ++objectCount;
 }
 Employee::Employee(const std::string& name):name(name), position(Position::Intern), salary(0.0), experience(0)
 {
+    ++objectCount;
+}
+Employee::~Employee() 
+{
+    --objectCount;
+}
 
+int Employee::getObjectCount() 
+{
+    return objectCount;
 }
 
 std::string Employee::getName() const { return name;}
