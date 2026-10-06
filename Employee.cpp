@@ -15,17 +15,29 @@ std::string positionToString(Position pos)
         default: return "Неизвестно";
     }
 }
-
+bool Employee::isValid() const 
+{
+    // Проверка инвариантов
+    return !name.empty() && salary >= 0 && experience >= 0;
+}
 Employee::Employee() : name("Неизвестно"), position(Position::Intern), salary(0.0), experience(0)
 {
     ++objectCount;
 }
 Employee::Employee(const std::string& name, Position pos, double salary, int experience) : name(name), position(pos), salary(salary), experience(experience)
 {
+    if (!isValid())
+    {
+        throw std::invalid_argument("Некорректные данные");
+    }
     ++objectCount;
 }
 Employee::Employee(const std::string& name):name(name), position(Position::Intern), salary(0.0), experience(0)
 {
+    if (name.empty())
+    {
+        throw std::invalid_argument("Имя пустое");
+    }
     ++objectCount;
 }
 Employee::~Employee() 
@@ -60,7 +72,7 @@ void Employee::changePosition(Position newPos)
 void Employee::increaseExperience(int years) 
 {
     if (years < 0) {
-        std::cout << "!Ошибка! Стаж не может быть отрицательным\n";
+        std::cout << "Ошибка! Стаж не может быть отрицательным\n";
         return;
     }
     experience += years;
@@ -69,6 +81,7 @@ void Employee::increaseExperience(int years)
 void Employee::print() const
 {
     std::cout << "Сотрудник" << name
+    << ", Должность: " << positionToString(position)
     << ", Зарплата: " << salary
-    << ", Стаж: " << experience << "\n";
+    << ", Стаж: " << experience << " лет\n";
 }

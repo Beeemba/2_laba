@@ -1,3 +1,8 @@
+/**
+ * @file main.cpp
+ * @brief Демонстрация класса Employee
+ * @details Тестирование конструкторов, методов, инвариантов
+ */
 #include <iostream>
 #include "Employee.h"
 
