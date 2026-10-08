@@ -4,21 +4,36 @@
 #include <string>
 #include <iostream>
 /**
- * @brief Должности сотрудников
+ * @brief Класс должности сотрудника
+ * @details Инвариант: уровень (level) не может быть отриц
  */
-enum class Position
-{
-    Intern,
-    Junior,
-    Middle,
-    Senior,
-    Lead,
-    Manager
-};
 /**
- * @brief Перевод enum в строку
+ * @brief Класс должности сотрудника
+ * @details Инвариант: базовая ставка не может быть отрицательной
  */
-std::string positionToString(Position pos);
+class Position
+{
+private:
+    std::string title;      ///< Название должности
+    double baseSalary;      ///< Минимальная зарплата для этой должности
+
+public:
+    /**
+     * @brief Конструктор по умолчанию
+     */
+    Position();
+
+    /**
+     * @brief Параметризованный конструктор
+     * @param title Название должности
+     * @param baseSalary Базовая ставка
+     */
+    Position(const std::string& title, double baseSalary);
+
+    std::string getTitle() const;    ///< Получить название
+    double getBaseSalary() const;    ///< Получить базовую ставку
+    void print() const;              ///< Вывод должности
+};
 /**
  * @brief Класс сотрудника компании
  * @details Инварианты: имя не пустое, зарплата >= 0, стаж >= 0
@@ -52,7 +67,7 @@ Employee();
      * @param experience Стаж
      * @throws std::invalid_argument если данные некорректны
      */
-Employee(const std::string& name, Position pos, double salary, int experience);
+Employee(const std::string& name, const Position& pos, double salary, int experience);
 /**
      * @brief Конструктор только с именем
      * @param name Имя
@@ -81,7 +96,7 @@ void increaseSalary(double amount);
      * @brief Сменить должность
      * @param newPos Новая должность
      */
-void changePosition(Position newPos);
+void changePosition(const Position& newPos);
 /**
      * @brief Увеличить стаж
      * @param years Количество лет (должно быть >= 0)
